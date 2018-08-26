@@ -8,19 +8,35 @@ $wp->send_headers();
 
 get_header();
 ?>
-.responsive {
-    width: 100%;
-    height: 0%;
-    padding-bottom: 56.25;
-    position: relative;
+<style>
+.resp-container {
+	position: relative;
+	overflow: hidden;
+	padding-top: 56.25%;
 }
-.responsive iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.resp-iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
 }
-<div class="responsive">
-<iframe width="560" height="300" src="https://sketch.io/sketchpad/" frameborder="0" allowfullscreen></iframe>
+/*.responsive {
+	width: 100%;
+	height: 0%;
+	padding-bottom: 56.25;
+	position: relative;
+	}*/
+/*.responsive iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	}*/
+</style>
+
+<div class="resp-container">
+	<iframe class="resp-iframe" src="https://sketch.io/sketchpad/" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <?php get_footer();
