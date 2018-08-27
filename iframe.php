@@ -21,6 +21,7 @@ get_header();
 	width: 100%;
 	height: 100%;
 	border: 0;
+    	margin-top: 100px;
 }
 /*.responsive {
 	width: 100%;
@@ -37,7 +38,11 @@ get_header();
 
 <div class="resp-container">
 	<!-- <iframe class="resp-iframe" src="https://sketch.io/sketchpad/" frameborder="0" allowfullscreen></iframe> -->
-	<iframe class="resp-iframe" src="https://colormandala.com/" frameborder="0" allowfullscreen></iframe>
+	<iframe class="resp-iframe" width="100%" height="100%" src="https://colormandala.com/" frameborder="0" allowfullscreen></iframe>
+
+/*<audio src="/music/good_enough.mp3" controls display:none;>
+
+</audio>*/
 </div>
 
 <?php get_footer();
