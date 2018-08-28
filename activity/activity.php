@@ -8,67 +8,153 @@ $wp->send_headers();
 
 get_header();
 ?>
-<link type="text/css" rel="stylesheet" href="style.css">
 
-<form method="get">
-	<input type="checkbox" name="type[]" value="dance">Dance
-	<input type="checkbox" name="type[]" value="yoga">Yoga
-	<input type="checkbox" name="type[]" value="fitness">Fitness centre
-	<input type="checkbox" name="type[]" value="swimming">Swimming pool
-	<input type="checkbox" name="type[]" value="club">Club
-	<input type="checkbox" name="type[]" value="martial arts">Martial arts
-	<input type="checkbox" name="type[]" value="tai chi">Tai Chi
-	<input type="checkbox" name="type[]" value="recreation group">Recreation group
-	<input type="checkbox" name="type[]" value="walking">Walking club
-
-
-	<input type="submit" name="set" value="search">
-
-</form>
 <?php 
-if ($_GET['set']) {
-	$type=$_GET['type'];
-	if (empty($type)) {
-		echo "You didn't select any types";
-	} else {
-		global $wpdb;
-		$str=implode("%'or`category` like '%",$type);
-		$result=$wpdb->get_results("select * from `activities` where `category` like '%$str%'"); ?>	
-		<div class="cards">	
-			<?php foreach ($result as $print) {	?>
 
-				<div class="card">
-					<img src="images/wave1.jpg">
-					<div class="card-title">
-						<a href="http://www.google.com/" class="toggle-info btn">
-							<span class="left"></span>
-							<span class="right"></span>
-						</a>
-						<h2>
-							<?php echo $print->name; ?>
-							<small><?php echo $print->category; ?></small>
-						</h2>
-					</div>
-					<div class="card-flap flap1">
-						<div class="card-description">
-							<?php echo $print->address; ?><br/>
-							<?php echo $print->postcode; ?>
-						</div>
-						<div class="card-flap flap2">
-							<div class="card-actions">
-								<a href="http://www.jsdaima.com/" class="btn">More</a>
+session_start();
+global $wpdb;
+$_SESSION['arts']=$wpdb->get_results("select * from `arts`");
+$_SESSION['fitness']=$wpdb->get_results("select * from `fitness`");
+$_SESSION['sport']=$wpdb->get_results("select * from `sport`");
+
+?>
+
+<div style="min-height: 500px">
+	<div style="text-align: center;">
+		<div class="dropdown">
+			<button class="dropbtn">Arts</button>
+			<div class="dropdown-content">
+				<a href="?search=true&category=arts">All</a>
+				<a href="?search=true&category=arts&subcategory=music">Music</a>
+				<a href="?search=true&category=arts&subcategory=gallery">Gallery</a>
+				<a href="?search=true&category=arts&subcategory=visual arts and craft">Visual arts and craft</a>
+				<a href="?search=true&category=arts&subcategory=theatre">Theatre</a>
+				<a href="?search=true&category=arts&subcategory=dance">Dance</a>
+				<a href="?search=true&category=arts&subcategory=literature">Literature</a>
+				<a href="?search=true&category=arts&subcategory=musuem">Musuem</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Fitnesses</button>
+			<div class="dropdown-content">
+				<a href="?search=true&category=fitness">All</a>
+				<a href="?search=true&category=fitness&subcategory=fitness centre">Fitness centre</a>
+				<a href="?search=true&category=fitness&subcategory=dance class">Dance Class</a>
+				<a href="?search=true&category=fitness&subcategory=martial arts">Martial Arts</a>
+				<a href="?search=true&category=fitness&subcategory=gymnasium workouts">Gymnasium Workouts</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Sports</button>
+			<div class="dropdown-content">
+				<a href="?search=true&category=sport">All</a>
+				<a href="?search=true&category=sport&subcategory=soccer">Soccer</a>
+				<a href="?search=true&category=sport&subcategory=Tennis (Outdoor)">Tennis (Outdoor)</a>
+				<a href="?search=true&category=sport&subcategory=Basketball">Basketball</a>
+				<a href="?search=true&category=sport&subcategory=Australian Rules Football">Australian Rules Football</a>
+				<a href="?search=true&category=sport&subcategory=Swimming">Swimming</a>
+				<a href="?search=true&category=sport&subcategory=Hockey">Hockey</a>
+				<a href="?search=true&category=sport&subcategory=Rugby Union">Rugby Union</a>
+				<a href="?search=true&category=sport&subcategory=Football">Football</a>
+				<a href="?search=true&category=sport&subcategory=Netball">Netball</a>
+				<a href="?search=true&category=sport&subcategory=Soccer (Indoor Soccer / Futsal)">Soccer (Indoor Soccer / Futsal)</a>
+				<a href="?search=true&category=sport&subcategory=Touch Football">Touch Football</a>
+				<a href="?search=true&category=sport&subcategory=Netball (Indoor)">Netball (Indoor)</a>
+				<a href="?search=true&category=sport&subcategory=Sailing">Sailing</a>
+				<a href="?search=true&category=sport&subcategory=Baseball">Baseball</a>
+				<a href="?search=true&category=sport&subcategory=Lacrosse">Lacrosse</a>
+				<a href="?search=true&category=sport&subcategory=Surf Life Saving">Surf Life Saving</a>
+				<a href="?search=true&category=sport&subcategory=Skating">Skating</a>
+				<a href="?search=true&category=sport&subcategory=Volleyball">Volleyball</a>
+				<a href="?search=true&category=sport&subcategory=Rugby League">Rugby League</a>
+				<a href="?search=true&category=sport&subcategory=Gridiron">Gridiron</a>
+				<a href="?search=true&category=sport&subcategory=BMX">BMX</a>
+				<a href="?search=true&category=sport&subcategory=Team Handball">Team Handball</a>
+				<a href="?search=true&category=sport&subcategory=Cycling">Cycling</a>
+				<a href="?search=true&category=sport&subcategory=Golf">Golf</a>
+				<a href="?search=true&category=sport&subcategory=Shooting Sports">Shooting Sports</a>
+				<a href="?search=true&category=sport&subcategory=Badminton">Badminton</a>
+				<a href="?search=true&category=sport&subcategory=Squash / Racquetball">Squash / Racquetball</a>
+				<a href="?search=true&category=sport&subcategory=Softball">Softball</a>
+				<a href="?search=true&category=sport&subcategory=Martial Arts">Martial Arts</a>
+			</div>
+		</div>
+	</div>
+
+	<?php 
+	if ($_GET['search']) {
+		$category=strtolower($_GET['category']);
+		$subcategory=empty($_GET['subcategory'])?false:strtolower($_GET['subcategory']);
+		?>
+		<div class="content">	
+			<?php foreach ($_SESSION[$category] as $row) {	
+				if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false){ ?>
+					<div class="card">
+						<div class="front">
+							<p><?php echo $row->name; ?><br><br>
+								<small><?php echo $row->suburb; ?></small></p>
 							</div>
-						</div>
-					</div>
-				</div>
-				<?php
-			}?></div><?php 
-		} 
-	}
+							<div class="back" style="text-align: left;">
+								<div>
+									<p><b>Address: </b><?php echo $row->address . " " . $row->postcode; ?></p>
+									<?php 
+									if (!(strtolower(trim($row->phone))=="na")){ ?>
+										<p><b>Phone: </b><?php echo $row->phone; ?></p> <?php
+									} 
+									if (!(strtolower(trim($row->website))=="na")) { ?>
+										<p><b>Website: </b><a href=<?php echo $row->website; ?> target="_blank" class="button">
+											Click here</a></p> <?php
+										}?>
+									</div>
+								</div>
+							</div>
+
+							<?php
+						}
+					}?></div>
+					<?php 				
+				}
 
 
-	?>
-	<script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
-	<script type="text/javascript" src="index.js"></script>
-	<?php get_footer();
+				?>
+			</div>
+			<link type="text/css" rel="stylesheet" href="card-display.css">
+			<style>
+			.dropbtn {
+				background-color: #4CAF50;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f1f1f1;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;
+				max-height: 400px;
+				overflow: auto;
+			}
+
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			.dropdown-content a:hover {background-color: #ddd;}
+
+			.dropdown:hover .dropdown-content {display: block;}
+
+			.dropdown:hover .dropbtn {background-color: #3e8e41;}
+		</style>
+		<?php get_footer();
