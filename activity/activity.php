@@ -19,10 +19,13 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 
 ?>
 
-<div style="min-height: 500px">
-	<div style="text-align: center;padding-top: 20px;padding-bottom: 60px;">
+<div style="min-height: 300px">
+	<div style="text-align: center;padding-top: 20px;">
+		<h4 style="display: inline;font-size: large;">What do you like?</h4>
+	</div>
+	<div style="text-align: center;padding-top: 30px;padding-bottom: 20px;">
 		<div class="dropdown">
-			<button class="dropbtn">Arts</button>
+			<button class="dropbtn" style="font-weight: bold;">Arts</button>
 			<div class="dropdown-content">
 				<a href="?search=true&category=arts">All</a>
 				<a href="?search=true&category=arts&subcategory=music">Music</a>
@@ -35,7 +38,7 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 			</div>
 		</div>
 		<div class="dropdown">
-			<button class="dropbtn">Fitnesses</button>
+			<button class="dropbtn" style="font-weight: bold;">Fitnesses</button>
 			<div class="dropdown-content">
 				<a href="?search=true&category=fitness">All</a>
 				<a href="?search=true&category=fitness&subcategory=fitness centre">Fitness centre</a>
@@ -45,7 +48,7 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 			</div>
 		</div>
 		<div class="dropdown">
-			<button class="dropbtn">Sports</button>
+			<button class="dropbtn" style="font-weight: bold;">Sports</button>
 			<div class="dropdown-content">
 				<a href="?search=true&category=sport">All</a>
 				<a href="?search=true&category=sport&subcategory=soccer">Soccer</a>
@@ -84,11 +87,11 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 		$category=strtolower($_GET['category']);
 		$subcategory=empty($_GET['subcategory'])?false:strtolower($_GET['subcategory']);
 		?>
-		<div style="text-align: center;"><p style="display: inline;"><?php 
+		<div style="text-align: center;"><p style="display: inline;font-size: larger;"><?php 
 		if ($subcategory===false) {
-			echo ucfirst($category) . "-> All";
+			echo ucfirst($category) . " - All";
 		} else {
-			echo ucfirst($category) . "-> " . ucwords($subcategory);
+			echo ucfirst($category) . " - " . ucwords($subcategory);
 		}
 		?></p></div>
 		<div class="content">	
@@ -119,54 +122,54 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 					}?></div>
 					<?php 				
 				} else { ?>
-					<div style="text-align: center;">
-						<p style="display: inline;">Choose what you like</p>
-						</div> <?php
-					}  ?>
-					
-				</div>
-				<link type="text/css" rel="stylesheet" href="css/card-display.css">
-				<style>
-				.dropbtn {
-					display: inline-block;
-					background-color: #4CAF50;
-					color: white;
-					font-size: 16px;
-					border: none;	
-					width: 100px;
-					height: 50px;
-				}
+					<div style="text-align: center;padding-top: 50px;">
+						<p style="display: inline-block;font-size: larger;">Here you can find the details of those places based on your interests</p>
+					</div>
+				<?php }  ?>
 
-				.dropdown {
-					position: relative;
-					display: inline-block;	
-					padding-left: 10px;
-					padding-right: 10px;
+			</div>
+			<link type="text/css" rel="stylesheet" href="css/card-display.css">
+			<style>
+			.dropbtn {
+				display: inline-block;
+				background-color: lightcoral;
+				color: white;
+				font-size: 16px;
+				border: none;	
+				width: 100px;
+				height: 50px;
+			}
 
-				}
+			.dropdown {
+				position: relative;
+				display: inline-block;	
+				padding-left: 10px;
+				padding-right: 10px;
 
-				.dropdown-content {
-					display: none;
-					position: absolute;
-					background-color: #f1f1f1;
-					min-width: 160px;
-					box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-					z-index: 1;
-					max-height: 400px;
-					overflow: auto;
-				}
+			}
 
-				.dropdown-content a {
-					color: black;
-					padding: 12px 16px;
-					text-decoration: none;
-					display: block;
-				}
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f1f1f1;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;
+				max-height: 200px;
+				overflow: auto;
+			}
 
-				.dropdown-content a:hover {background-color: #ddd;}
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
 
-				.dropdown:hover .dropdown-content {display: block;}
+			.dropdown-content a:hover {background-color: #ddd;}
 
-				.dropdown:hover .dropbtn {background-color: #3e8e41;}
-			</style>
-			<?php get_footer();
+			.dropdown:hover .dropdown-content {display: block;}
+
+			.dropdown:hover .dropbtn {background-color: #3e8e41;}
+		</style>
+		<?php get_footer();
