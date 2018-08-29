@@ -20,7 +20,7 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 ?>
 
 <div style="min-height: 500px">
-	<div style="text-align: center;">
+	<div style="text-align: center;padding-top: 20px;padding-bottom: 60px;">
 		<div class="dropdown">
 			<button class="dropbtn">Arts</button>
 			<div class="dropdown-content">
@@ -86,6 +86,13 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 		$category=strtolower($_GET['category']);
 		$subcategory=empty($_GET['subcategory'])?false:strtolower($_GET['subcategory']);
 		?>
+		<div style="text-align: center;"><p style="display: inline;"><?php 
+		if ($subcategory===false) {
+			echo ucfirst($category) . "-> All";
+		} else {
+			echo ucfirst($category) . "-> " . ucwords($subcategory);
+		}
+		?></p></div>
 		<div class="content">	
 			<?php foreach ($_SESSION[$category] as $row) {	
 				if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false){ ?>
@@ -113,48 +120,55 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 						}
 					}?></div>
 					<?php 				
+				} else { ?>
+					<div style="text-align: center;">
+						<p style="display: inline;">Choose what you like</p>
+						</div> <?php
+					}  ?>
+					
+				</div>
+				<link type="text/css" rel="stylesheet" href="css/card-display.css">
+				<style>
+				.dropbtn {
+					display: inline-block;
+					background-color: #4CAF50;
+					color: white;
+					font-size: 16px;
+					border: none;	
+					width: 100px;
+					height: 50px;
 				}
 
+				.dropdown {
+					position: relative;
+					display: inline-block;	
+					padding-left: 10px;
+					padding-right: 10px;
 
-				?>
-			</div>
-			<link type="text/css" rel="stylesheet" href="card-display.css">
-			<style>
-			.dropbtn {
-				background-color: #4CAF50;
-				color: white;
-				padding: 16px;
-				font-size: 16px;
-				border: none;
-			}
+				}
 
-			.dropdown {
-				position: relative;
-				display: inline-block;
-			}
+				.dropdown-content {
+					display: none;
+					position: absolute;
+					background-color: #f1f1f1;
+					min-width: 160px;
+					box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+					z-index: 1;
+					max-height: 400px;
+					overflow: auto;
+				}
 
-			.dropdown-content {
-				display: none;
-				position: absolute;
-				background-color: #f1f1f1;
-				min-width: 160px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-				z-index: 1;
-				max-height: 400px;
-				overflow: auto;
-			}
+				.dropdown-content a {
+					color: black;
+					padding: 12px 16px;
+					text-decoration: none;
+					display: block;
+				}
 
-			.dropdown-content a {
-				color: black;
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-			}
+				.dropdown-content a:hover {background-color: #ddd;}
 
-			.dropdown-content a:hover {background-color: #ddd;}
+				.dropdown:hover .dropdown-content {display: block;}
 
-			.dropdown:hover .dropdown-content {display: block;}
-
-			.dropdown:hover .dropbtn {background-color: #3e8e41;}
-		</style>
-		<?php get_footer();
+				.dropdown:hover .dropbtn {background-color: #3e8e41;}
+			</style>
+			<?php get_footer();
