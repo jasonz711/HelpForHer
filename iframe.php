@@ -39,11 +39,17 @@ get_header();
 	}*/
 </style>
 
-<div class="resp-container hidden-xs hidden-sm" id="desk">
+<div class="resp-container hidden-xs hidden-sm">
+	
+
 	<iframe class="resp-iframe" src="http://weavesilk.com/" frameborder="0" allowfullscreen></iframe>
 
 	<iframe style="display:none;"width="560" height="315" src="https://www.youtube.com/embed/RZrcaOnqu-E?rel=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+</div>
+
+<div class="hidden-md hidden-lg">
+	<p >Sorry for the inconvenience caused. Unfortunately this service is available only for Desktop version. We are working on it to make it better for you. Thank you.</p>
 </div>
 
 

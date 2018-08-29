@@ -33,5 +33,10 @@ get_header();
 
 </div>
 
+<div class="hidden-md hidden-lg">
+	<p >Sorry for the inconvenience caused. Unfortunately this service is available only for Desktop version. We are working on it to make it better for you. Thank you.</p>
+</div>
+
+
 
 <?php get_footer();
