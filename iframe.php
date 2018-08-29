@@ -12,7 +12,9 @@ get_header();
 .resp-container {
 	position: relative;
 	overflow: hidden;
-	padding-top: 56.25%;
+	padding-bottom: 56.25%;
+	padding-top: 35px;
+	height: 0;
 }
 .resp-iframe {
 	position: absolute;
@@ -21,7 +23,8 @@ get_header();
 	width: 100%;
 	height: 100%;
 	border: 0;
-    	margin-top: 100px;
+}
+
 }
 /*.responsive {
 	width: 100%;
@@ -36,13 +39,12 @@ get_header();
 	}*/
 </style>
 
-<div class="resp-container">
-	<!-- <iframe class="resp-iframe" src="https://sketch.io/sketchpad/" frameborder="0" allowfullscreen></iframe> -->
-	<iframe class="resp-iframe" width="100%" height="100%" src="https://colormandala.com/" frameborder="0" allowfullscreen></iframe>
+<div class="resp-container hidden-xs hidden-sm" id="desk">
+	<iframe class="resp-iframe" src="http://weavesilk.com/" frameborder="0" allowfullscreen></iframe>
 
-/*<audio src="/music/good_enough.mp3" controls display:none;>
+	<iframe style="display:none;"width="560" height="315" src="https://www.youtube.com/embed/RZrcaOnqu-E?rel=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-</audio>*/
 </div>
+
 
 <?php get_footer();
