@@ -13,7 +13,6 @@ get_header();
 	position: relative;
 	overflow: hidden;
 	padding-bottom: 56.25%;
-	padding-top: 35px;
 	height: 0;
 }
 .resp-iframe {
@@ -26,31 +25,15 @@ get_header();
 }
 
 }
-/*.responsive {
-	width: 100%;
-	height: 0%;
-	padding-bottom: 56.25;
-	position: relative;
-	}*/
-/*.responsive iframe {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	}*/
+
 </style>
 
 <div class="resp-container hidden-xs hidden-sm">
-	
-
-	<iframe class="resp-iframe" src="http://weavesilk.com/" frameborder="0" allowfullscreen></iframe>
-
-	<iframe style="display:none;"width="560" height="315" src="https://www.youtube.com/embed/RZrcaOnqu-E?rel=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<iframe class="resp-iframe" src="https://colormandala.com/" frameborder="0" allowfullscreen></iframe>
 
 </div>
-
 <div class="hidden-md hidden-lg" style="padding-top: 50px;padding-bottom:50px;">
 	<p>Sorry this feature is available only for Desktop version.</p>
 </div>
-
 
 <?php get_footer();
