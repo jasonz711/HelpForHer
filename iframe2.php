@@ -36,4 +36,8 @@ get_header();
 	<p>Sorry this feature is available only for Desktop version.</p>
 </div>
 
+</div>
+
+
+
 <?php get_footer();
