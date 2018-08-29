@@ -49,17 +49,15 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 			<div class="dropdown-content">
 				<a href="?search=true&category=sport">All</a>
 				<a href="?search=true&category=sport&subcategory=soccer">Soccer</a>
-				<a href="?search=true&category=sport&subcategory=Tennis (Outdoor)">Tennis (Outdoor)</a>
+				<a href="?search=true&category=sport&subcategory=Tennis">Tennis</a>
 				<a href="?search=true&category=sport&subcategory=Basketball">Basketball</a>
-				<a href="?search=true&category=sport&subcategory=Australian Rules Football">Australian Rules Football</a>
 				<a href="?search=true&category=sport&subcategory=Swimming">Swimming</a>
 				<a href="?search=true&category=sport&subcategory=Hockey">Hockey</a>
 				<a href="?search=true&category=sport&subcategory=Rugby Union">Rugby Union</a>
 				<a href="?search=true&category=sport&subcategory=Football">Football</a>
 				<a href="?search=true&category=sport&subcategory=Netball">Netball</a>
-				<a href="?search=true&category=sport&subcategory=Soccer (Indoor Soccer / Futsal)">Soccer (Indoor Soccer / Futsal)</a>
 				<a href="?search=true&category=sport&subcategory=Touch Football">Touch Football</a>
-				<a href="?search=true&category=sport&subcategory=Netball (Indoor)">Netball (Indoor)</a>
+				<a href="?search=true&category=sport&subcategory=Netball">Netball</a>
 				<a href="?search=true&category=sport&subcategory=Sailing">Sailing</a>
 				<a href="?search=true&category=sport&subcategory=Baseball">Baseball</a>
 				<a href="?search=true&category=sport&subcategory=Lacrosse">Lacrosse</a>
@@ -74,7 +72,7 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 				<a href="?search=true&category=sport&subcategory=Golf">Golf</a>
 				<a href="?search=true&category=sport&subcategory=Shooting Sports">Shooting Sports</a>
 				<a href="?search=true&category=sport&subcategory=Badminton">Badminton</a>
-				<a href="?search=true&category=sport&subcategory=Squash / Racquetball">Squash / Racquetball</a>
+				<a href="?search=true&category=sport&subcategory=Squash">Squash</a>
 				<a href="?search=true&category=sport&subcategory=Softball">Softball</a>
 				<a href="?search=true&category=sport&subcategory=Martial Arts">Martial Arts</a>
 			</div>
