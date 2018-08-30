@@ -38,7 +38,7 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 			</div>
 		</div>
 		<div class="dropdown">
-			<button class="dropbtn" style="font-weight: bold;">Fitnesses</button>
+			<button class="dropbtn" style="font-weight: bold;">Fitness</button>
 			<div class="dropdown-content">
 				<a href="?search=true&category=fitness">All</a>
 				<a href="?search=true&category=fitness&subcategory=fitness centre">Fitness centre</a>
