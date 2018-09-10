@@ -19,9 +19,10 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 
 ?>
 
-<div style="min-height: 300px">
+<div style="min-height: 300px;">
 	<div style="text-align: center;padding-top: 20px;">
-		<h4 style="display: inline;font-size: large;">What do you like?</h4>
+		<h4 style="display: inline;font-size: large;">What is your interest?</h4><br>
+		<h4 style="display: inline;">Find more details on the places basded on your interests</h4>
 	</div>
 	<div style="text-align: center;padding-top: 30px;padding-bottom: 20px;">
 		<div class="dropdown">
@@ -94,15 +95,15 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 			echo ucfirst($category) . " - " . ucwords($subcategory);
 		}
 		?></p></div>
-		<div class="content">	
+		<div id="content">	
 			<?php foreach ($_SESSION[$category] as $row) {	
 				if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false){ ?>
-					<div class="card">
-						<div class="front">
+					<div id="card">
+						<div id="front">
 							<p><?php echo $row->name; ?><br><br>
 								<small><?php echo $row->suburb; ?></small></p>
 							</div>
-							<div class="back" style="text-align: left;">
+							<div id="back" style="text-align: left;">
 								<div>
 									<p><b>Address: </b><?php echo $row->address . " " . $row->postcode; ?></p>
 									<?php 
@@ -110,7 +111,7 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 										<p><b>Phone: </b><?php echo $row->phone; ?></p> <?php
 									} 
 									if (!(strtolower(trim($row->website))=="na")) { ?>
-										<p><b>Website: </b><a href=<?php echo $row->website; ?> target="_blank" class="button">
+										<p><b>Website: </b><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button">
 											Click here</a></p> <?php
 										}?>
 									</div>
@@ -121,18 +122,14 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 						}
 					}?></div>
 					<?php 				
-				} else { ?>
-					<div style="text-align: center;padding-top: 50px;">
-						<p style="display: inline-block;font-size: larger;">Here you can find the details of those places based on your interests</p>
-					</div>
-				<?php }  ?>
+				}  ?>
 
 			</div>
 			<link type="text/css" rel="stylesheet" href="css/card-display.css">
 			<style>
 			.dropbtn {
 				display: inline-block;
-				background-color: lightcoral;
+				background-color: #24223a;
 				color: white;
 				font-size: 16px;
 				border: none;	
@@ -170,6 +167,6 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 
 			.dropdown:hover .dropdown-content {display: block;}
 
-			.dropdown:hover .dropbtn {background-color: #3e8e41;}
+			.dropdown:hover .dropbtn {background-color: #24223a94;}
 		</style>
 		<?php get_footer();

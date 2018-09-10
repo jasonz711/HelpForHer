@@ -18,7 +18,7 @@ body {
   background-attachment: fixed;
 }
 
-.content {
+#content {
   display: flex;
   margin: 0 auto;
   justify-content: center;
@@ -56,7 +56,7 @@ body {
   margin-bottom: 3rem;
 }
 
-.card {
+#card {
   color: inherit;   /*back font color*/
   cursor: pointer;
   width: calc(33% - 2rem);
@@ -68,22 +68,22 @@ body {
   position: relative;
 }
 @media screen and (max-width: 800px) {
-  .card {
+  #card {
     width: calc(50% - 2rem);
   }
 }
 @media screen and (max-width: 500px) {
-  .card {
+  #card {
     width: 100%;
   }
 }
 
-.front p {
+#front p {
   font-size: 20px;
 }
 
-.front,
-.back {
+#front,
+#back {
   display: flex;
   border-radius: 6px;
   background-position: center;
@@ -100,7 +100,8 @@ body {
   transition: ease-in-out 600ms;
 }
 
-.front {
+#front {
+  background-color: lightblue;
   background-size: cover;
   padding: 2rem;
   font-size: 1.618rem;
@@ -109,7 +110,7 @@ body {
   overflow: hidden;
   font-family: 'Microsoft Yahei', sans-serif;
 }
-.front:before {
+#front:before {
   position: absolute;
   display: block;
   content: '';
@@ -121,25 +122,25 @@ body {
   opacity: .25;
   z-index: -1;
 }
-.card:hover .front {
+#card:hover #front {
   transform: rotateY(180deg);
 }
-.card:nth-child(even):hover .front {
+#card:nth-child(even):hover #front {
   transform: rotateY(-180deg);
 }
 
-.back {
+#back {
   background: #fff;       /*back background color*/
   transform: rotateY(-180deg);
   padding: 0 2em;
 }
-.card:hover .back {
+#card:hover #back {
   transform: rotateY(0deg);
 }
-.card:nth-child(even) .back {
+#card:nth-child(even) #back {
   transform: rotateY(180deg);
 }
-.card:nth-child(even):hover .back {
+#card:nth-child(even):hover #back {
   transform: rotateY(0deg);
 }
 
