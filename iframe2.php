@@ -8,6 +8,7 @@ $wp->send_headers();
 
 get_header();
 ?>
+
 <style>
 .resp-container {
 	position: relative;
@@ -24,18 +25,34 @@ get_header();
 	border: 0;
 }
 
+
+@media (min-width: 992px) {
+    .main {
+        display: none;
+    }
 }
+
+@media (max-width: 992px) {
+
+    .main2 {
+
+        display: none;
+
+    }
+
+}
+
+
 
 </style>
 
-<div class="resp-container hidden-xs hidden-sm">
+
+<div class="resp-container main2 hidden-xs hidden-sm">
 	<iframe class="resp-iframe" src="https://colormandala.com/" frameborder="0" allowfullscreen></iframe>
-
 </div>
-<div class="hidden-md hidden-lg" style="padding-top: 50px;padding-bottom:50px;">
+
+<div class="main hidden-md hidden-lg" style="padding-top: 50px;padding-bottom:50px;">
 	<p>Sorry this feature is available only for Desktop version.</p>
-</div>
-
 </div>
 
 
