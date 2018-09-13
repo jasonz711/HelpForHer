@@ -1,5 +1,6 @@
 *, *:before, *:after {
   box-sizing: border-box;
+  backface-visibility: hidden;
 }
 
 html {
@@ -66,12 +67,12 @@ body {
   margin: 1rem;
   position: relative;
 }
-@media screen and (max-width: 800px) {
+@media (max-width: 800px) {
   #card {
     width: calc(50% - 2rem);
   }
 }
-@media screen and (max-width: 500px) {
+@media (max-width: 500px) {
   #card {
     width: 100%;
   }
@@ -84,7 +85,7 @@ body {
 #front,
 #back {
   display: flex;
-  border-radius: 6px;
+  border-radius: 16px;
   background-position: center;
   background-size: cover;
   text-align: center;
@@ -107,7 +108,7 @@ body {
   font-weight: 600;
   color: #fff;    /*front font color*/
   overflow: hidden;
-  font-family: 'Microsoft Yahei', sans-serif;
+  font-family: sans-serif;
 }
 #front:before {
   position: absolute;
@@ -129,7 +130,8 @@ body {
 }
 
 #back {
-  background: #fff;       /*back background color*/
+  background: lightblue;       /*back background color*/
+  color: #fff;
   transform: rotateY(-180deg);
   padding: 0 2em;
 }
@@ -150,7 +152,7 @@ body {
   backface-visibility: hidden;
   font-weight: bold;
   color: #fff;
-  padding: .5em 1em;
+  padding: .1em .5em;
   border-radius: 100px;
   font: inherit;
   background: linear-gradient(135deg, #1a9be6, #1a57e6);
