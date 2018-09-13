@@ -65,41 +65,37 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 					</div>
 					<div id="back" style="text-align: left;">
 						<div>
-							<p><b>Address: </b><?php echo $row->address_1; ?></p>
+							<p><i class="fa fa-map-marker" style="color: #fff;"></i>&nbsp<?php echo $row->address_1; ?></p>
 							<?php 
 							if (isset($row->phone)){ ?>
-								<p><b>Phone: </b><?php echo $row->phone; ?></p> <?php
-							} 
-							if (isset($row->event_url)) { ?>
-								<p><b>Website: </b><a href=<?php echo $row->event_url; ?> target="_blank" class="button" id="button">
-									Click here</a></p> <?php
-								}?>
-								<a style="text-decoration: none;" class="mapBtn" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)">Description</a>
-							</div>
+								<p><i class="fa fa-phone" style="color: #fff;"></i>&nbsp<?php echo $row->phone; ?></p> <?php
+							}?>							
+							<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Description</a>
 						</div>
 					</div>
-					<div class="modal" id="modal<?php echo $index; ?>">
-						<div class="modal-content" style="height: auto;padding-bottom: 10px;">							
-							<?php echo $row->description; ?>
-						</div>
+				</div>
+				<div class="modal" id="modal<?php echo $index; ?>">
+					<div class="modal-content" style="height: auto;padding-bottom: 10px;">							
+						<?php echo $row->description; ?>
 					</div>
-					<?php
+				</div>
+				<?php
 
-				}?></div>
-			</div>
+			}?></div>
 		</div>
-		<link type="text/css" rel="stylesheet" href="css/card-display.css">
-		<link type="text/css" rel="stylesheet" href="css/modal.css">
-		<script type="text/javascript" src="js/modal.js"></script>
-		<style>
-		html,body{
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		}
-		footer{
-			height: 300px;
-			margin-top: -300px;
-		}
-	</style>
-	<?php get_footer();
+	</div>
+	<link type="text/css" rel="stylesheet" href="css/card-display.css">
+	<link type="text/css" rel="stylesheet" href="css/modal.css">
+	<script type="text/javascript" src="js/modal.js"></script>
+	<style>
+	html,body{
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	footer{
+		height: 300px;
+		margin-top: -300px;
+	}
+</style>
+<?php get_footer();
