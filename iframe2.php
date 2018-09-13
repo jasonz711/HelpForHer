@@ -26,7 +26,7 @@ get_header();
 }
 
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
     .main {
         display: none;
     }
