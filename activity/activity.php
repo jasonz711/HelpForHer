@@ -16,6 +16,7 @@ global $wpdb;
 $_SESSION['arts']=$wpdb->get_results("select * from `arts`");
 $_SESSION['fitness']=$wpdb->get_results("select * from `fitness`");
 $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
+$key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 
 ?>
 
@@ -102,89 +103,111 @@ $_SESSION['sport']=$wpdb->get_results("select * from `sport`");
 								<span style="font-size: small;"><?php echo $row->address . " " . $row->postcode; ?></span></p>
 							</div>
 							<div id="back" style="text-align: left;">
-								<div>									
-									<?php 
-									if (!(strtolower(trim($row->phone))=="na")){ ?>
-										<p><b>Phone: </b><?php echo $row->phone; ?></p> <?php
-									} 
-									if (!(strtolower(trim($row->website))=="na")) { ?>
-										<p><b>Website: </b><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button">
-										Click here</a></p>							
-										<?php
-									}?>
-									<a style="text-decoration: none;" class="mapBtn" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)">show me there</a>
+								<div>
+									<div style="line-height: 5px;padding-top: 20px;margin-bottom: 10px;font-size: small;">	
+										<?php 
+										if (!(strtolower(trim($row->mon))=="na")) { ?>
+											<p>Monday:<?php echo $row->mon; ?></p> <?php
+										}
+										if (!(strtolower(trim($row->tue))=="na")) { ?>
+											<p>Tuesday:<?php echo $row->tue; ?></p> <?php
+										}
+										if (!(strtolower(trim($row->wed))=="na")) { ?>
+											<p>Wednesday:<?php echo $row->wed; ?></p> <?php
+										}
+										if (!(strtolower(trim($row->thu))=="na")) { ?>
+											<p>Thursday:<?php echo $row->thu; ?></p> <?php
+										}
+										if (!(strtolower(trim($row->fri))=="na")) { ?>
+											<p>Friday:<?php echo $row->fri; ?></p> <?php
+										}
+										if (!(strtolower(trim($row->sat))=="na")) { ?>
+											<p>Saturday:<?php echo $row->sat; ?></p> <?php
+										}
+										if (!(strtolower(trim($row->sun))=="na")) { ?>
+											<p>Sunday:<?php echo $row->sun; ?></p> <?php
+										} ?> </div> <?php
+										if (!(strtolower(trim($row->phone))=="na")){ ?>
+											<p><i class="fa fa-phone" style="color: #fff;"></i><?php echo $row->phone; ?></p> <?php
+										} 
+										if (!(strtolower(trim($row->website))=="na")) { ?>
+											<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
+												Website<i class="fa fa-home" style="color: #fff;"></i></a></p>							
+												<?php
+											}?>
+											<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location<i class="fa fa-location-arrow" style="color: #fff;"></i></a>
+										</div>
+									</div>
+								</div>
+								<div class="modal" id="modal<?php echo $index; ?>">
+									<div class="modal-content">							
+										<iframe class="resp-mapiframe"								
+										frameborder="0" style="border:0"
+										src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>
+										&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
+									</iframe>
 								</div>
 							</div>
-						</div>
-						<div class="modal" id="modal<?php echo $index; ?>">
-							<div class="modal-content">							
-							<iframe class="resp-mapiframe"								
-							frameborder="0" style="border:0"
-							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCY06u4Q0z7X9VJ308Mk1WxeShKhH5noBw
-							&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
-						</iframe>
-					</div>
-				</div>
-				<?php
+							<?php
+						}
+					}?></div>
+					<?php 				
+				}  ?>
+
+			</div>
+			<link type="text/css" rel="stylesheet" href="css/card-display.css">
+			<link type="text/css" rel="stylesheet" href="css/modal.css">
+			<script type="text/javascript" src="js/modal.js"></script>
+			<style>
+			html,body{
+				height: 100%;
+				margin: 0;
+				padding: 0;
 			}
-		}?></div>
-		<?php 				
-	}  ?>
+			footer{
+				height: 300px;
+				margin-top: -300px;
+			}
+			.dropbtn {
+				display: inline-block;
+				background-color: #191730;
+				color: white;
+				font-size: 16px;
+				border: none;	
+				width: 100px;
+				height: 50px;
+			}
 
-</div>
-<link type="text/css" rel="stylesheet" href="css/card-display.css">
-<link type="text/css" rel="stylesheet" href="css/modal.css">
-<script type="text/javascript" src="js/modal.js"></script>
-<style>
-html,body{
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-footer{
-	height: 300px;
-	margin-top: -300px;
-}
-.dropbtn {
-	display: inline-block;
-	background-color: #24223a;
-	color: white;
-	font-size: 16px;
-	border: none;	
-	width: 100px;
-	height: 50px;
-}
+			.dropdown {
+				position: relative;
+				display: inline-block;	
+				padding-left: 10px;
+				padding-right: 10px;
 
-.dropdown {
-	position: relative;
-	display: inline-block;	
-	padding-left: 10px;
-	padding-right: 10px;
+			}
 
-}
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f1f1f1;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;
+				max-height: 200px;
+				overflow: auto;
+			}
 
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f1f1f1;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 1;
-	max-height: 200px;
-	overflow: auto;
-}
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
 
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-}
+			.dropdown-content a:hover {background-color: #ddd;}
 
-.dropdown-content a:hover {background-color: #ddd;}
+			.dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {opacity: 0.8;}
-</style>
-<?php get_footer();
+			.dropdown:hover .dropbtn {opacity: 0.8;}
+		</style>
+		<?php get_footer();
