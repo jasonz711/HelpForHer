@@ -52,37 +52,54 @@ foreach ($eventarr as $key => $value) {
 array_multisort($timearr,SORT_ASC,$eventarr);
 
 ?>
-<div style="text-align: center;padding-top: 20px;">
-	<h4 style="display: inline;font-size: large;">Find out what's happening in Melbourne</h4><br>
-</div>
-<div id="content">	
-	<?php foreach ($eventarr as $row) {	?>
-		<div id="card">
-			<div id="front">
-				<p><?php echo $row->name; ?><br><br>
-					<small><?php echo date("D,j M Y g:ia",$row->time+10*3600); ?></small></p>
-				</div>
-				<div id="back" style="text-align: left;">
-					<div>
-						<p><b>Address: </b><?php echo $row->address_1; ?></p>
-						<?php 
-						if (isset($row->phone)){ ?>
-							<p><b>Phone: </b><?php echo $row->phone; ?></p> <?php
-						} 
-						if (isset($row->event_url)) { ?>
-							<p><b>Website: </b><a href=<?php echo $row->event_url; ?> target="_blank" class="button" id="button">
-								Click here</a></p> <?php
-							}?>
+<div style="min-height: 100%;padding-bottom: 300px;">
+	<div style="text-align: center;padding-top: 20px;">
+		<h4 style="display: inline;font-size: large;">Find out what's happening in Melbourne</h4><br>
+	</div>
+	<div id="content">	
+		<?php foreach ($eventarr as $index=>$row) {	?>
+			<div id="card">
+				<div id="front">
+					<p><?php echo $row->name; ?><br><br>
+						<small><?php echo date("D,j M Y g:ia",$row->time+10*3600); ?></small></p>
+					</div>
+					<div id="back" style="text-align: left;">
+						<div>
+							<p><b>Address: </b><?php echo $row->address_1; ?></p>
+							<?php 
+							if (isset($row->phone)){ ?>
+								<p><b>Phone: </b><?php echo $row->phone; ?></p> <?php
+							} 
+							if (isset($row->event_url)) { ?>
+								<p><b>Website: </b><a href=<?php echo $row->event_url; ?> target="_blank" class="button" id="button">
+									Click here</a></p> <?php
+								}?>
+								<a style="text-decoration: none;" class="mapBtn" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)">Description</a>
+							</div>
 						</div>
 					</div>
-				</div>
+					<div class="modal" id="modal<?php echo $index; ?>">
+						<div class="modal-content" style="height: auto;padding-bottom: 10px;">							
+							<?php echo $row->description; ?>
+						</div>
+					</div>
+					<?php
 
-				<?php
-				
-			}?></div>
-			
-
+				}?></div>
+			</div>
 		</div>
 		<link type="text/css" rel="stylesheet" href="css/card-display.css">
-
-		<?php get_footer();
+		<link type="text/css" rel="stylesheet" href="css/modal.css">
+		<script type="text/javascript" src="js/modal.js"></script>
+		<style>
+		html,body{
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		footer{
+			height: 300px;
+			margin-top: -300px;
+		}
+	</style>
+	<?php get_footer();
