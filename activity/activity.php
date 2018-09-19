@@ -88,54 +88,54 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 		?>
 		<div style="text-align: center;"><p style="display: inline;font-size: larger;"><?php 
 		if ($subcategory===false) {
-			echo ucfirst($category) . " - All";
+			echo ucfirst($category) . " &#8680 All";
 		} else {
-			echo ucfirst($category) . " - " . ucwords($subcategory);
+			echo ucfirst($category) . " &#8680 " . ucwords($subcategory);
 		}
 		?></p></div>
 		<div id="content">	
 			<?php foreach ($_SESSION[$category] as $index=>$row) {	
 				if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false){ ?>
-					<div id="card">
-						<div id="front">
+					<div class="activity_card">
+						<div class="activity_card_front" style="background-image: url(img/<?php echo $category . '.jpg' ?>);">
 							<p><?php echo $row->name; ?><br><br>
 								<small><?php echo $row->suburb; ?></small><br>
 								<span style="font-size: small;"><?php echo $row->address . " " . $row->postcode; ?></span></p>
 							</div>
-							<div id="back" style="text-align: left;">
+							<div class="activity_card_back" style="text-align: left;">
 								<div>
-									<div style="line-height: 5px;padding-top: 20px;margin-bottom: 10px;font-size: small;">	
+									<div class="open_time">	
 										<?php 
 										if (!(strtolower(trim($row->mon))=="na")) { ?>
-											<p>Monday:<?php echo $row->mon; ?></p> <?php
+											<p class="day_name">Mon</p><p class="time_detail"><?php echo $row->mon; ?></p> <?php
 										}
 										if (!(strtolower(trim($row->tue))=="na")) { ?>
-											<p>Tuesday:<?php echo $row->tue; ?></p> <?php
+											<p class="day_name">Tue</p><p class="time_detail"><?php echo $row->tue; ?></p> <?php
 										}
 										if (!(strtolower(trim($row->wed))=="na")) { ?>
-											<p>Wednesday:<?php echo $row->wed; ?></p> <?php
+											<p class="day_name">Wed</p><p class="time_detail"><?php echo $row->wed; ?></p> <?php
 										}
 										if (!(strtolower(trim($row->thu))=="na")) { ?>
-											<p>Thursday:<?php echo $row->thu; ?></p> <?php
+											<p class="day_name">Thu</p><p class="time_detail"><?php echo $row->thu; ?></p> <?php
 										}
 										if (!(strtolower(trim($row->fri))=="na")) { ?>
-											<p>Friday:<?php echo $row->fri; ?></p> <?php
+											<p class="day_name">Fri</p><p class="time_detail"><?php echo $row->fri; ?></p> <?php
 										}
 										if (!(strtolower(trim($row->sat))=="na")) { ?>
-											<p>Saturday:<?php echo $row->sat; ?></p> <?php
+											<p class="day_name">Sat</p><p class="time_detail"><?php echo $row->sat; ?></p> <?php
 										}
 										if (!(strtolower(trim($row->sun))=="na")) { ?>
-											<p>Sunday:<?php echo $row->sun; ?></p> <?php
+											<p class="day_name">Sun</p><p class="time_detail"><?php echo $row->sun; ?></p> <?php
 										} ?> </div> <?php
 										if (!(strtolower(trim($row->phone))=="na")){ ?>
-											<p><i class="fa fa-phone" style="color: #fff;"></i><?php echo $row->phone; ?></p> <?php
+											<p><i class="fa fa-phone"></i><?php echo $row->phone; ?></p> <?php
 										} 
 										if (!(strtolower(trim($row->website))=="na")) { ?>
 											<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
-												Website<i class="fa fa-home" style="color: #fff;"></i></a></p>							
+												Website</i></a></p>							
 												<?php
 											}?>
-											<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location<i class="fa fa-location-arrow" style="color: #fff;"></i></a>
+											<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location</a>
 										</div>
 									</div>
 								</div>
@@ -155,7 +155,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 				}  ?>
 
 			</div>
-			<link type="text/css" rel="stylesheet" href="css/card-display.css">
+			<link type="text/css" rel="stylesheet" href="css/activity.css">
 			<link type="text/css" rel="stylesheet" href="css/modal.css">
 			<script type="text/javascript" src="js/modal.js"></script>
 			<style>
@@ -170,7 +170,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 			}
 			.dropbtn {
 				display: inline-block;
-				background-color: #191730;
+				background-color: rgba(26, 24, 50, 0.72);
 				color: white;
 				font-size: 16px;
 				border: none;	
