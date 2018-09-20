@@ -58,44 +58,62 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 	</div>
 	<div id="content">	
 		<?php foreach ($eventarr as $index=>$row) {	?>
-			<div id="card">
-				<div id="front">
-					<p><?php echo $row->name; ?><br><br>
-						<small><?php echo date("D,j M Y g:ia",$row->time+10*3600); ?></small></p>
+			<div class="event_card">
+				<div class="event_card_front">
+					<div class="event_img">
+						<img src="<?php if (isset($row->photo_url)) {
+							echo $row->photo_url;
+						} else {echo "img/event.jpg";} ?>">
 					</div>
-					<div id="back" style="text-align: left;">
-						<div>
-							<p><i class="fa fa-map-marker" style="color: #fff;"></i>&nbsp<?php echo $row->address_1; ?></p>
-							<?php 
-							if (isset($row->phone)){ ?>
-								<p><i class="fa fa-phone" style="color: #fff;"></i>&nbsp<?php echo $row->phone; ?></p> <?php
-							}?>							
-							<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Description</a>
-						</div>
+					<date class="card__date">
+						<span class="card__date__day">
+							<?php echo date("j",$row->time+10*3600); ?>
+						</span>
+						<br/>
+						<span class="card__date__month">
+							<?php echo date("M",$row->time+10*3600); ?>
+						</span>
+					</date>
+					<div class="event_card_front_text">
+						<p><?php echo $row->name; ?><br><br></p>
+					</div>
+					<div class="event_card_footer">
+						<i class="fa fa-clock-o"></i> <?php echo date("g:ia",$row->time+10*3600); ?>
 					</div>
 				</div>
-				<div class="modal" id="modal<?php echo $index; ?>">
-					<div class="modal-content" style="height: auto;padding-bottom: 10px;">							
-						<?php echo $row->description; ?>
+				<div class="event_card_back" style="text-align: left;">
+					<div>
+						<p><i class="fa fa-map-marker" style="color: #fff;"></i>&nbsp<?php echo $row->address_1; ?></p>
+						<?php 
+						if (isset($row->phone)){ ?>
+							<p><i class="fa fa-phone" style="color: #fff;"></i>&nbsp<?php echo $row->phone; ?></p> <?php
+						}?>							
+						<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Description</a>
 					</div>
 				</div>
-				<?php
+			</div>
+			<div class="modal" id="modal<?php echo $index; ?>">
+				<div class="modal-content" style="height: auto;padding-bottom: 10px;">							
+					<?php echo $row->description; ?>
+				</div>
+			</div>
+			<?php
 
-			}?></div>
-		</div>
+		}?></div>
 	</div>
-	<link type="text/css" rel="stylesheet" href="css/card-display.css">
-	<link type="text/css" rel="stylesheet" href="css/modal.css">
-	<script type="text/javascript" src="js/modal.js"></script>
-	<style>
-	html,body{
-		height: 100%;
-		margin: 0;
-		padding: 0;
-	}
-	footer{
-		height: 300px;
-		margin-top: -300px;
-	}
+</div>
+<link type="text/css" rel="stylesheet" href="css/event.css">
+<link type="text/css" rel="stylesheet" href="css/modal.css">
+<script type="text/javascript" src="js/modal.js"></script>
+<style>
+html,body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+footer{
+	height: 300px;
+	margin-top: -300px;
+}
 </style>
 <?php get_footer();
