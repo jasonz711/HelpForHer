@@ -27,7 +27,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 	</div>
 	<div style="text-align: center;padding-top: 30px;padding-bottom: 20px;">
 		<div class="dropdown">
-			<button class="dropbtn" style="font-weight: bold;">Arts</button>
+			<button class="dropbtn" style="font-weight: bold;">Arts <i class="fa fa-caret-down"></i></button>
 			<div class="dropdown-content">
 				<a href="?search=true&category=arts">All</a>
 				<a href="?search=true&category=arts&subcategory=dance">Dance</a>
@@ -40,7 +40,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 			</div>
 		</div>
 		<div class="dropdown">
-			<button class="dropbtn" style="font-weight: bold;">Fitness</button>
+			<button class="dropbtn" style="font-weight: bold;">Fitness <i class="fa fa-caret-down"></i></button>
 			<div class="dropdown-content">
 				<a href="?search=true&category=fitness">All</a>
 				<a href="?search=true&category=fitness&subcategory=dance class">Dance Class</a>
@@ -50,7 +50,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 			</div>
 		</div>
 		<div class="dropdown">
-			<button class="dropbtn" style="font-weight: bold;">Sports</button>
+			<button class="dropbtn" style="font-weight: bold;">Sports <i class="fa fa-caret-down"></i></button>
 			<div class="dropdown-content">
 				<a href="?search=true&category=sport">All</a>
 				<a href="?search=true&category=sport&subcategory=Badminton">Badminton</a>
@@ -132,82 +132,85 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 										} 
 										if (!(strtolower(trim($row->website))=="na")) { ?>
 											<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
-												Website</i></a></p>							
-												<?php
-											}?>
-											<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location</a>
-										</div>
+											Website</i></a></p>							
+											<?php
+										}?>
+										<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location</a>
 									</div>
 								</div>
-								<div class="modal" id="modal<?php echo $index; ?>">
-									<div class="modal-content">							
-										<iframe class="resp-mapiframe"								
-										frameborder="0" style="border:0"
-										src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>
-										&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
-									</iframe>
-								</div>
 							</div>
-							<?php
-						}
-					}?></div>
-					<?php 				
-				}  ?>
+							<div class="modal" id="modal<?php echo $index; ?>">
+								<div class="modal-content">							
+									<iframe class="resp-mapiframe"								
+									frameborder="0" style="border:0"
+									src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>
+									&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
+								</iframe>
+							</div>
+						</div>
+						<?php
+					}
+				}?></div>
+				<?php 				
+			}  ?>
 
-			</div>
-			<link type="text/css" rel="stylesheet" href="css/activity.css">
-			<link type="text/css" rel="stylesheet" href="css/modal.css">
-			<script type="text/javascript" src="js/modal.js"></script>
-			<style>
-			html,body{
-				height: 100%;
-				margin: 0;
-				padding: 0;
-			}
-			footer{
-				height: 300px;
-				margin-top: -300px;
-			}
-			.dropbtn {
-				display: inline-block;
-				background-color: rgba(26, 24, 50, 0.72);
-				color: white;
-				font-size: 16px;
-				border: none;	
-				width: 100px;
-				height: 50px;
-			}
+		</div>
+		<link type="text/css" rel="stylesheet" href="css/activity.css">
+		<link type="text/css" rel="stylesheet" href="css/modal.css">
+		<script type="text/javascript" src="js/modal.js"></script>
+		<style>
+		html,body{
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		footer{
+			height: 300px;
+			margin-top: -300px;
+		}
+		.dropbtn {
+			display: inline-block;
+			background-color: rgba(26, 24, 50, 0.72);
+			color: white;
+			font-size: 16px;
+			border: none;	
+			width: 100px;
+			height: 50px;
+		}
+		.dropbtn i{
+			color: white;
+		}
 
-			.dropdown {
-				position: relative;
-				display: inline-block;	
-				padding-left: 10px;
-				padding-right: 10px;
+		.dropdown {
+			position: relative;
+			display: inline-block;	
+			padding-left: 10px;
+			padding-right: 10px;
 
-			}
+		}
 
-			.dropdown-content {
-				display: none;
-				position: absolute;
-				background-color: #f1f1f1;
-				min-width: 160px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-				z-index: 1;
-				max-height: 200px;
-				overflow: auto;
-			}
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f1f1f1;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+			max-height: 200px;
+			overflow: auto;
+		}
 
-			.dropdown-content a {
-				color: black;
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-			}
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
 
-			.dropdown-content a:hover {background-color: #ddd;}
+		.dropdown-content a:hover {background-color: #ddd;}
 
-			.dropdown:hover .dropdown-content {display: block;}
+		.dropdown:hover .dropdown-content {display: block;}
 
-			.dropdown:hover .dropbtn {opacity: 0.8;}
-		</style>
-		<?php get_footer();
+		.dropdown:hover .dropbtn {opacity: 0.8;}
+	</style>
+	<?php get_footer();
