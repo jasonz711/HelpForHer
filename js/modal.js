@@ -12,6 +12,12 @@ function mapBtnFunction(btnId) {
 	modal.style.display = "block";
 }
 
+function descBtnFunction(btnId) {
+	var modalId=btnId.replace("descBtn","desc_modal");
+	var modal=document.getElementById(modalId);
+	modal.style.display = "block";
+}
+
 // When the user clicks on <span> (x), close the modal
 // span.onclick = function() {
 // 	for (var i=0;i<allModal.length;i++) {
