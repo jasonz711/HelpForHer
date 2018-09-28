@@ -9,36 +9,47 @@ $wp->send_headers();
 get_header();
 
 require 'vendor/autoload.php';
+use GuzzleHttp\Exception\ClientException;
 global $wpdb;
 $client = new GuzzleHttp\Client();
-$res = $client->request('GET', 'https://api.meetup.com/2/open_events',[
-	'query'=>[
-		'category'=>1,
-		'country'=>'au',
-		'city'=>'melbourne',
-		'key'=>'43d1e76135b34636c37457273d4c']
-	]);
-if ($res->getStatusCode()==200) {
-	$apidata=json_decode($res->getBody(),ture);
-	foreach ($apidata['results'] as $value) {
-		$temparr = array('id' => $value['id'],
-			'name' => $value['name'],
-			'time' => $value['time']/1000,
-			'placename' => $value['venue']['name'],
-			'lat' => $value['venue']['lat'],
-			'lon' => $value['venue']['lon'],
-			'address_1' => $value ['venue']['address_1'],
-			'address_2' => $value['venue']['address_2'],
-			'address_3' => $value['venue']['address_3'],
-			'city' => $value['venue']['city'],
-			'phone' => $value['venue']['phone'],
-			'event_url' => $value['event_url'],
-			'description' => $value['description'],
-			'duration' => $value['duration']/1000,
-			'photo_url' => $value['photo_url']);
-		$wpdb->replace('events',$temparr);
+$meetupkey=$wpdb->get_var("select `value` from `credentials` where `id`=2");
+//try to connect Meetup API
+try {
+	$res = $client->request('GET', 'https://api.meetup.com/2/open_events',[
+		'query'=>[
+			'category'=>1,
+			'country'=>'au',
+			'city'=>'melbourne',
+			'key'=>$meetupkey]
+		]);
+} catch (ClientException $e) {
+
+}
+//decode json result,save to database,override old ones
+if(isset($res)) {
+	if ($res->getStatusCode()==200) {
+		$apidata=json_decode($res->getBody(),ture);
+		foreach ($apidata['results'] as $value) {
+			$temparr = array('id' => $value['id'],
+				'name' => $value['name'],
+				'time' => $value['time']/1000,
+				'placename' => $value['venue']['name'],
+				'lat' => $value['venue']['lat'],
+				'lon' => $value['venue']['lon'],
+				'address_1' => $value ['venue']['address_1'],
+				'address_2' => $value['venue']['address_2'],
+				'address_3' => $value['venue']['address_3'],
+				'city' => $value['venue']['city'],
+				'phone' => $value['venue']['phone'],
+				'event_url' => $value['event_url'],
+				'description' => $value['description'],
+				'duration' => $value['duration']/1000,
+				'photo_url' => $value['photo_url']);
+			$wpdb->replace('events',$temparr);
+		}
 	}
 }
+
 //get Google Map API key from DB
 $mapkey=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 $query="select * from `events` where `time`>=" . time();
