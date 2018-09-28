@@ -121,7 +121,6 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 <link type="text/css" rel="stylesheet" href="css/event.css">
 <link type="text/css" rel="stylesheet" href="css/modal.css">
 <script type="text/javascript" src="js/modal.js"></script>
-<script type="text/javascript" src="js/modal.js"></script>
 <style>
 html,body{
 	height: 100%;
