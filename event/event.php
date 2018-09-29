@@ -1,3 +1,17 @@
+<style>
+html,body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+footer{
+	height: 300px;
+	margin-top: -300px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="css/event.css">
+<link type="text/css" rel="stylesheet" href="css/modal.css">
+
 <?php
 require_once(dirname(__FILE__) . '/wp-config.php');
 $wp->init();
@@ -118,18 +132,6 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 		}?></div>
 	</div>
 </div>
-<link type="text/css" rel="stylesheet" href="css/event.css">
-<link type="text/css" rel="stylesheet" href="css/modal.css">
+
 <script type="text/javascript" src="js/modal.js"></script>
-<style>
-html,body{
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-footer{
-	height: 300px;
-	margin-top: -300px;
-}
-</style>
 <?php get_footer();
