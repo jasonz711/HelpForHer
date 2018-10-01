@@ -59,7 +59,7 @@
   width: 45px;
   height: 45px;
   padding-top: 10px;
-  background-color: coral;
+  background-color: #7986cb;
   border-radius: 50%;
   color: #fff;
   text-align: center;
@@ -95,7 +95,7 @@
 .event_address a {
   cursor: pointer;
   text-decoration: none;
-  color: coral;
+  color: #7986cb;
 }
 .event_card_footer,.event_card_footer i,.event_card_footer a {
   color: #A3A9A2;
