@@ -26,9 +26,16 @@ function resetAll()
   }
 }
 </script>
+
 <style>
-img {
-  float: left;
+
+.bubble-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+}
+.bubble-item {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .buttons { margin-bottom: 1.0em; }
@@ -55,124 +62,47 @@ button {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
+
+
 
 </style>
 
 <h1>Bubble Wrap</h1>
 <p>Click to pop the bubbles</p>
 <hr>
-<div id="container">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
- <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-    <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-   <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
- <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-    <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-</div>
+  
+<div class="bubble-container">
+
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>  
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>  
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>  
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>  
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>  
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>  
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+  <div class="bubble-item"><img src="http://bit.ly/AX202_UnPop" onclick="pop()"></div>
+ 
+ </div>
+	
 
 <br>
 <br>
