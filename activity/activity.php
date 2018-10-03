@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php
 require_once(dirname(__FILE__) . '/wp-config.php');
 $wp->init();
@@ -8,7 +9,8 @@ $wp->send_headers();
 
 get_header();
 ?>
-
+<link type="text/css" rel="stylesheet" href="css/modal.css">
+<link type="text/css" rel="stylesheet" href="css/activity.css">
 <?php 
 
 session_start();
@@ -92,9 +94,22 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 		} else {
 			echo ucfirst($category) . " &#8680 " . ucwords($subcategory);
 		}
-		?></p></div>
+		?><form method="POST" id="form1">
+			<input type="checkbox" name="openweekend" <?php if (isset($_POST['openweekend'])) {echo "checked='checked'";} ?>>Show places open on weekend
+		</form></p></div>
 		<div id="content">	
-			<?php foreach ($_SESSION[$category] as $index=>$row) {	
+			<?php 
+			$activityArr=array();
+			if (isset($_POST['openweekend'])) {
+				foreach ($_SESSION[$category] as $index=>$row) {
+					if (strtolower($row->sat)!="closed" or strtolower($row->sun)!="closed") {
+						$activityArr[$index]=$row;
+					}
+				}
+			} else {
+				$activityArr=$_SESSION[$category];
+			}
+			foreach ($activityArr as $index=>$row) {	
 				if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false){ ?>
 					<div class="activity_card">
 						<div class="activity_card_front" style="background-image: url(img/<?php echo $category . '.jpg' ?>);">
@@ -154,10 +169,10 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 				<?php 				
 			}  ?>
 
-		</div>
-		<link type="text/css" rel="stylesheet" href="css/activity.css">
-		<link type="text/css" rel="stylesheet" href="css/modal.css">
+		</div>		
 		<script type="text/javascript" src="js/modal.js"></script>
+		
+		
 		<style>
 		html,body{
 			height: 100%;
@@ -213,4 +228,13 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 
 		.dropdown:hover .dropbtn {opacity: 0.8;}
 	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("input:checkbox").change(
+				function()
+				{					
+					$("#form1").submit();					
+				});
+		});
+	</script>
 	<?php get_footer();

@@ -85,7 +85,7 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 ?>
 <div style="min-height: 100%;padding-bottom: 300px;">
 	<div style="text-align: center;padding-top: 20px;">
-		<h4 style="display: inline;font-size: large;">Find out volunteer opportunities in Melbourne</h4><br>
+		<h4 style="display: inline;font-size: large;">Find out volunteering opportunities in Melbourne</h4><br>
 	</div>
 	<div id="content">	
 		<?php foreach ($eventarr as $index=>$row) {	?>
