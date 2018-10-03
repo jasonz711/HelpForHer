@@ -44,7 +44,8 @@ get_header();
 </style>
 
 <div class="resp-container main2 hidden-xs hidden-sm">
-	
+
+	<p> Click on the shield icon on the top right corner of the browser and then click on load unsafe scripts </p>	
 
 	<iframe class="resp-iframe" src="http://weavesilk.com/" frameborder="0" allowfullscreen ></iframe>
 
