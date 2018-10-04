@@ -8,7 +8,7 @@ footer{
 	height: 300px;
 	margin-top: -300px;
 }
-</style>
+</style> 
 <link type="text/css" rel="stylesheet" href="css/event.css">
 <link type="text/css" rel="stylesheet" href="css/modal.css">
 
@@ -22,54 +22,10 @@ $wp->send_headers();
 
 get_header();
 
-require 'vendor/autoload.php';
-use GuzzleHttp\Exception\ClientException;
 global $wpdb;
-$client = new GuzzleHttp\Client();
-$meetupkey=$wpdb->get_var("select `value` from `credentials` where `id`=2");
-//try to connect Meetup API
-try {
-	$res = $client->request('GET', 'https://api.meetup.com/2/open_events',[
-		'query'=>[
-			'category'=>1,
-			'country'=>'au',
-			'city'=>'melbourne',
-			'key'=>$meetupkey]
-		]);
-} catch (ClientException $e) {
-
-}
-//decode json result,save to database,override old ones
-if(isset($res)) {
-	if ($res->getStatusCode()==200) {
-		$apidata=json_decode($res->getBody(),ture);
-		foreach ($apidata['results'] as $value) {
-			$temparr = array('id' => $value['id'],
-				'name' => $value['name'],
-				'time' => $value['time']/1000,
-				'placename' => $value['venue']['name'],
-				'lat' => $value['venue']['lat'],
-				'lon' => $value['venue']['lon'],
-				'address_1' => $value ['venue']['address_1'],
-				'address_2' => $value['venue']['address_2'],
-				'address_3' => $value['venue']['address_3'],
-				'city' => $value['venue']['city'],
-				'phone' => $value['venue']['phone'],
-				'event_url' => $value['event_url'],
-				'description' => $value['description'],
-				'duration' => $value['duration']/1000,
-				'photo_url' => $value['photo_url']);
-			$wpdb->replace('events',$temparr);
-		}
-	}
-}
-
 //get Google Map API key from DB
 $mapkey=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 $query="select * from `events` where `time`>=" . time();
-//delete old records
-$query_delete="delete from `events` where `time`<" . time();
-$wpdb->query($query_delete);
 $eventarr=$wpdb->get_results($query);
 //sort events by time
 $timearr=array();
@@ -82,6 +38,7 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 <div style="min-height: 100%;padding-bottom: 300px;">
 	<div style="text-align: center;padding-top: 20px;">
 		<h4 style="display: inline;font-size: large;">Find out what's happening in Melbourne</h4><br>
+		<?php if (count($eventarr)==0) {echo "<h4>Opps, no events are available right now. Please come back later!</h4>";} ?>
 	</div>
 	<div id="content">	
 		<?php foreach ($eventarr as $index=>$row) {	?>
