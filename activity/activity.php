@@ -24,7 +24,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 
 <div style="min-height: 100%;padding-bottom: 300px;">
 	<div style="text-align: center;padding-top: 20px;">
-		<h4 style="display: inline;font-size: large;">What is your interest?</h4><br>
+		<h4 style="display: inline;font-size: large;">What are you interested in?</h4><br>
 		<h4 style="display: inline;">Find more details about the places based on your interests</h4>
 	</div>
 	<div style="text-align: center;padding-top: 30px;padding-bottom: 20px;">
@@ -84,7 +84,15 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 	</div>
 
 	<?php 
-	if ($_GET['search']) {
+	$activityArr=array();
+	if (!isset($_GET['search'])) {
+		$rand_arts_key=array_rand($_SESSION['arts'],3);
+		$rand_fitness_key=array_rand($_SESSION['fitness'],3);
+		$rand_sport_key=array_rand($_SESSION['sport'],3);
+		for ($i=0; $i < 3; $i++) { 
+			array_push($activityArr,$_SESSION['arts'][$rand_arts_key[$i]],$_SESSION['fitness'][$rand_fitness_key[$i]],$_SESSION['sport'][$rand_sport_key[$i]]);
+		}
+	} elseif (isset($_GET['search'])) {
 		$category=strtolower($_GET['category']);
 		$subcategory=empty($_GET['subcategory'])?false:strtolower($_GET['subcategory']);
 		?>
@@ -97,9 +105,8 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 		?><form method="POST" id="form1">
 			<label><input type="checkbox" name="openweekend" <?php if (isset($_POST['openweekend'])) {echo "checked='checked'";} ?>>Show places open on weekend</label>
 		</form></p></div>
-		<div id="content">	
-			<?php 
-			$activityArr=array();
+			
+			<?php 			
 			if (isset($_POST['openweekend'])) {
 				foreach ($_SESSION[$category] as $index=>$row) {
 					if (strtolower($row->sat)!="closed" or strtolower($row->sun)!="closed") {
@@ -109,65 +116,66 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 			} else {
 				$activityArr=$_SESSION[$category];
 			}
-			foreach ($activityArr as $index=>$row) {	
-				if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false){ ?>
-					<div class="activity_card">
-						<div class="activity_card_front" style="background-image: url(img/<?php echo $category . '.jpg' ?>);">
-							<p><?php echo $row->name; ?><br><br>
-								<small><?php echo $row->suburb; ?></small><br>
-								<span style="font-size: small;"><?php echo $row->address . " " . $row->postcode; ?></span></p>
-							</div>
-							<div class="activity_card_back" style="text-align: left;">
-								<div>
-									<div class="open_time">	
-										<?php 
-										if (!(strtolower(trim($row->mon))=="na")) { ?>
-											<p class="day_name">Mon</p><p class="time_detail"><?php echo $row->mon; ?></p> <?php
-										}
-										if (!(strtolower(trim($row->tue))=="na")) { ?>
-											<p class="day_name">Tue</p><p class="time_detail"><?php echo $row->tue; ?></p> <?php
-										}
-										if (!(strtolower(trim($row->wed))=="na")) { ?>
-											<p class="day_name">Wed</p><p class="time_detail"><?php echo $row->wed; ?></p> <?php
-										}
-										if (!(strtolower(trim($row->thu))=="na")) { ?>
-											<p class="day_name">Thu</p><p class="time_detail"><?php echo $row->thu; ?></p> <?php
-										}
-										if (!(strtolower(trim($row->fri))=="na")) { ?>
-											<p class="day_name">Fri</p><p class="time_detail"><?php echo $row->fri; ?></p> <?php
-										}
-										if (!(strtolower(trim($row->sat))=="na")) { ?>
-											<p class="day_name">Sat</p><p class="time_detail"><?php echo $row->sat; ?></p> <?php
-										}
-										if (!(strtolower(trim($row->sun))=="na")) { ?>
-											<p class="day_name">Sun</p><p class="time_detail"><?php echo $row->sun; ?></p> <?php
-										} ?> </div> <?php
-										if (!(strtolower(trim($row->phone))=="na")){ ?>
-											<p><i class="fa fa-phone"></i><?php echo $row->phone; ?></p> <?php
-										} 
-										if (!(strtolower(trim($row->website))=="na")) { ?>
-											<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
-											Website</i></a></p>							
-											<?php
-										}?>
-										<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location</a>
-									</div>
+		} ?><div id="content"> <?php
+		foreach ($activityArr as $index=>$row) {	
+			if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false or (!isset($_GET['search']))){ ?>
+				<div class="activity_card">
+					<div class="activity_card_front" style="background-image: url(img/<?php echo strtolower($row->category) . '.jpg' ?>);">
+						<p><?php echo $row->name; ?><br><br>
+							<small><?php echo $row->suburb; ?></small><br>
+							<span style="font-size: small;"><?php echo $row->address . " " . $row->postcode; ?></span></p>
+						</div>
+						<div class="activity_card_back" style="text-align: left;">
+							<div>
+								<div class="open_time">	
+									<?php 
+									if (!(strtolower(trim($row->mon))=="na")) { ?>
+										<p class="day_name">Mon</p><p class="time_detail"><?php echo $row->mon; ?></p> <?php
+									}
+									if (!(strtolower(trim($row->tue))=="na")) { ?>
+										<p class="day_name">Tue</p><p class="time_detail"><?php echo $row->tue; ?></p> <?php
+									}
+									if (!(strtolower(trim($row->wed))=="na")) { ?>
+										<p class="day_name">Wed</p><p class="time_detail"><?php echo $row->wed; ?></p> <?php
+									}
+									if (!(strtolower(trim($row->thu))=="na")) { ?>
+										<p class="day_name">Thu</p><p class="time_detail"><?php echo $row->thu; ?></p> <?php
+									}
+									if (!(strtolower(trim($row->fri))=="na")) { ?>
+										<p class="day_name">Fri</p><p class="time_detail"><?php echo $row->fri; ?></p> <?php
+									}
+									if (!(strtolower(trim($row->sat))=="na")) { ?>
+										<p class="day_name">Sat</p><p class="time_detail"><?php echo $row->sat; ?></p> <?php
+									}
+									if (!(strtolower(trim($row->sun))=="na")) { ?>
+										<p class="day_name">Sun</p><p class="time_detail"><?php echo $row->sun; ?></p> <?php
+									} ?> </div> <?php
+									if (!(strtolower(trim($row->phone))=="na")){ ?>
+										<p><i class="fa fa-phone"></i><?php echo $row->phone; ?></p> <?php
+									} 
+									if (!(strtolower(trim($row->website))=="na")) { ?>
+										<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
+										Website</i></a></p>							
+										<?php
+									}?>
+									<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location</a>
 								</div>
 							</div>
-							<div class="modal" id="modal<?php echo $index; ?>">
-								<div class="modal-content">							
-									<iframe class="resp-mapiframe"								
-									frameborder="0" style="border:0"
-									src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>
-									&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
-								</iframe>
-							</div>
 						</div>
-						<?php
-					}
-				}?></div>
-				<?php 				
-			}  ?>
+						<div class="modal" id="modal<?php echo $index; ?>">
+							<div class="modal-content">							
+								<iframe class="resp-mapiframe"								
+								frameborder="0" style="border:0"
+								src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>
+								&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+					<?php
+				}
+			}?></div>
+			<?php 				
+			?>
 
 		</div>		
 		<script type="text/javascript" src="js/modal.js"></script>
