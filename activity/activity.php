@@ -95,7 +95,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 			echo ucfirst($category) . " &#8680 " . ucwords($subcategory);
 		}
 		?><form method="POST" id="form1">
-			<input type="checkbox" name="openweekend" <?php if (isset($_POST['openweekend'])) {echo "checked='checked'";} ?>>Show places open on weekend
+			<label><input type="checkbox" name="openweekend" <?php if (isset($_POST['openweekend'])) {echo "checked='checked'";} ?>>Show places open on weekend</label>
 		</form></p></div>
 		<div id="content">	
 			<?php 
