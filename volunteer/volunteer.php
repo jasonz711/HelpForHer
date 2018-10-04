@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link type="text/css" rel="stylesheet" href="css/volunteer.css">
 <link type="text/css" rel="stylesheet" href="css/modal.css">
 <?php
@@ -10,70 +11,10 @@ $wp->send_headers();
 
 get_header();
 
-require 'vendor/autoload.php';
-use GuzzleHttp\Exception\ClientException;
 global $wpdb;
-
-//extent max time limit to complete many API calls
-// set_time_limit(300);
-// $client = new GuzzleHttp\Client();
-// $eventbriteApiKey=$wpdb->get_var("select `value` from `credentials` where `id`=3");
-// //try to connect Eventbrite API
-// try {
-// 	$res = $client->request('GET', 'https://www.eventbriteapi.com/v3/events/search',[
-// 		'query'=>[
-// 			'categories'=>'113,103,110,105,104,108,106',
-// 			'location.address'=>'melbourne',
-// 			'q'=>'volunteer',
-// 			'token'=>$eventbriteApiKey]
-// 		]);
-// } catch (ClientException $e) {
-
-// }
-
-//decode json result,save to database,override old ones
-// if (isset($res)) { 
-// 	if ($res->getStatusCode()==200) {
-// 		$apidata=json_decode($res->getBody(),ture);
-// 		foreach ($apidata['events'] as $value) {
-// 			$temparr = array('id' => $value['id'],
-// 				'name' => $value['name']['text'],
-// 				'start_time' => strtotime($value['start']['local']),
-// 				'end_time' => strtotime($value['end']['local']),
-// 				'event_url' => $value['url'],
-// 				'description' => $value['description']['html'],
-// 				'photo_url' => $value['logo']['url']);
-// 			try {
-// 				$venue_url="https://www.eventbriteapi.com/v3/venues/".$value['venue_id'];
-// 				$venue_res = $client->request('GET', $venue_url,[
-// 					'query'=>['token'=>$eventbriteApiKey]
-// 				]);
-// 			} catch (ClientException $e) {
-
-// 			}
-// 			if (isset($venue_res)) {
-// 				if ($venue_res->getStatusCode()==200) {
-// 					$venue_res=json_decode($venue_res->getBody(),ture);
-// 					$temparr['placename']=$venue_res['name'];
-// 					$temparr['lat']=$venue_res['latitude'];
-// 					$temparr['lon']=$venue_res['longitude'];
-// 					$temparr['address_1']=$venue_res['address']['address_1'];
-// 					$temparr['address_2']=$venue_res['address']['address_2'];
-// 					$temparr['city']=$venue_res['address']['city'];
-
-// 				}
-// 			}
-// 			$wpdb->replace('volunteer',$temparr);
-// 		}
-// 	}
-// }
-
 // get Google Map API key from DB
 $mapkey=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 $query="select * from `volunteer` where `start_time`>=" . time();
-//delete old records
-$query_delete="delete from `volunteer` where `start_time`<" . time();
-$wpdb->query($query_delete);
 $eventarr=$wpdb->get_results($query);
 //sort events by time
 $timearr=array();
@@ -86,9 +27,43 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 <div style="min-height: 100%;padding-bottom: 300px;">
 	<div style="text-align: center;padding-top: 20px;">
 		<h4 style="display: inline;font-size: large;">Find out volunteering opportunities in Melbourne</h4><br>
+		<form method="POST" id="category_form">
+			<label><input type="radio" name="radio" value="all" <?php if ((isset($_POST['radio']) and $_POST['radio']=='all') or (!isset($_POST['radio']))) echo "checked='checked'"; ?>/>All</label>
+			<label><input type="radio" name="radio" value="arts" <?php if (isset($_POST['radio']) && $_POST['radio']=='arts') echo "checked='checked'";?>/>Arts</label>
+			<label><input type="radio" name="radio" value="culture" <?php if (isset($_POST['radio']) && $_POST['radio']=='culture') echo "checked='checked'";?>/>Culture</label>
+			<label><input type="radio" name="radio" value="sports" <?php if (isset($_POST['radio']) && $_POST['radio']=='sports') echo "checked='checked'";?>/>Sports&Fitness</label>
+		</form>
+		<?php 
+		$filteredVolunteer=array();
+		if (isset($_POST['radio'])) {
+			if ($_POST['radio']=='all') {
+				$filteredVolunteer=$eventarr;
+			} elseif ($_POST['radio']=='arts') {
+				foreach ($eventarr as $index=>$row) {
+					if (in_array($row->category_id, array(103,105,104,106))) {
+						array_push($filteredVolunteer,$row);
+					}
+				}
+			} elseif ($_POST['radio']=='culture') {
+				foreach ($eventarr as $index=>$row) {
+					if ($row->category_id==113) {
+						array_push($filteredVolunteer,$row);
+					}
+				}
+			} elseif ($_POST['radio']=='sports') {
+				foreach ($eventarr as $index=>$row) {
+					if ($row->category_id==108) {
+						array_push($filteredVolunteer,$row);
+					}
+				}
+			}			
+		} else {
+			$filteredVolunteer=$eventarr;
+		}
+		if (count($filteredVolunteer)==0) {echo "<h4>Opps, no volunteering events are available right now. Please come back later!</h4>";} ?>
 	</div>
 	<div id="content">	
-		<?php foreach ($eventarr as $index=>$row) {	?>
+		<?php foreach ($filteredVolunteer as $index=>$row) {	?>
 			<div class="event_card">
 				<div class="event_img">
 					<img src="<?php if (isset($row->photo_url)) {
@@ -148,4 +123,13 @@ footer{
 	margin-top: -300px;
 }
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("input:radio").change(
+			function()
+			{					
+				$("#category_form").submit();					
+			});
+	});
+</script>
 <?php get_footer();
