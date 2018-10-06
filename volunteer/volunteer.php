@@ -1,4 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link type="text/css" rel="stylesheet" href="css/volunteer.css">
 <link type="text/css" rel="stylesheet" href="css/modal.css">
 <?php
@@ -24,7 +23,7 @@ foreach ($eventarr as $key => $value) {
 array_multisort($timearr,SORT_ASC,$eventarr);
 
 ?>
-<div style="min-height: 100%;padding-bottom: 300px;">
+<div style="min-height: 100%;">
 	<div style="text-align: center;padding-top: 20px;">
 		<h4 style="display: inline;font-size: large;">Find out volunteering opportunities in Melbourne</h4><br>
 		<form method="POST" id="category_form">
@@ -110,7 +109,9 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 			<?php				
 		}?></div>
 	</div>
-</div>
+	<a href="#" class="go-top"><span class="go-top-content">Top</span></a>
+
+<script type="text/javascript" src="js/go-top.js"></script>
 <script type="text/javascript" src="js/modal.js"></script>
 <style>
 html,body{
