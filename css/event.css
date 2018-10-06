@@ -84,9 +84,7 @@
   color: #000;
   font-weight: bold;
 }
-.event_address,.event_address i {
-  color: #666C74;
-}
+
 .event_address {  
   line-height: 27px;
   padding-bottom: 5px;
@@ -106,7 +104,27 @@
 .event_card_footer{
   position: absolute;
   bottom: 0;
-  left: 10px;
-  right: 20px;
+  width: 100%;
+  text-align: center;
   font-size: 15px;  
+}
+.go-top {
+  position: fixed;
+  bottom: 2em;
+  right: 5em;
+  text-decoration: none;
+  font-size: 20px;
+  display: none;
+  background-color: coral;
+  font-weight: bold;
+  border-radius: 50px;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+}
+.go-top-content {
+  color: #fff;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
