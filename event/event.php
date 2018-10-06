@@ -35,7 +35,7 @@ foreach ($eventarr as $key => $value) {
 array_multisort($timearr,SORT_ASC,$eventarr);
 
 ?>
-<div style="min-height: 100%;padding-bottom: 300px;">
+<div style="min-height: 100%;">
 	<div style="text-align: center;padding-top: 20px;">
 		<h4 style="display: inline;font-size: large;">Find out what's happening in Melbourne</h4><br>
 		<?php if (count($eventarr)==0) {echo "<h4>Opps, no events are available right now. Please come back later!</h4>";} ?>
@@ -88,7 +88,8 @@ array_multisort($timearr,SORT_ASC,$eventarr);
 			<?php				
 		}?></div>
 	</div>
+	<a href="#" class="go-top"><span class="go-top-content">Top</span></a>
 </div>
-
+<script type="text/javascript" src="js/go-top.js"></script>
 <script type="text/javascript" src="js/modal.js"></script>
 <?php get_footer();
