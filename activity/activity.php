@@ -1,4 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php
 require_once(dirname(__FILE__) . '/wp-config.php');
 $wp->init();
@@ -22,7 +21,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 
 ?>
 
-<div style="min-height: 100%;padding-bottom: 300px;">
+<div style="min-height: 100%;">
 	<div style="text-align: center;padding-top: 20px;">
 		<h4 style="display: inline;font-size: large;">What are you interested in?</h4><br>
 		<h4 style="display: inline;">Find more details about the places based on your interests</h4>
@@ -105,144 +104,144 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 		?><form method="POST" id="form1">
 			<label><input type="checkbox" name="openweekend" <?php if (isset($_POST['openweekend'])) {echo "checked='checked'";} ?>>Show places open on weekend</label>
 		</form></p></div>
-			
-			<?php 			
-			if (isset($_POST['openweekend'])) {
-				foreach ($_SESSION[$category] as $index=>$row) {
-					if (strtolower($row->sat)!="closed" or strtolower($row->sun)!="closed") {
-						$activityArr[$index]=$row;
-					}
+
+		<?php 			
+		if (isset($_POST['openweekend'])) {
+			foreach ($_SESSION[$category] as $index=>$row) {
+				if (strtolower($row->sat)!="closed" or strtolower($row->sun)!="closed") {
+					$activityArr[$index]=$row;
 				}
-			} else {
-				$activityArr=$_SESSION[$category];
 			}
-		} ?><div id="content"> <?php
-		foreach ($activityArr as $index=>$row) {	
-			if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false or (!isset($_GET['search']))){ ?>
-				<div class="activity_card">
-					<div class="activity_card_front" style="background-image: url(img/<?php echo strtolower($row->category) . '.jpg' ?>);">
-						<p><?php echo $row->name; ?><br><br>
-							<small><?php echo $row->suburb; ?></small><br>
-							<span style="font-size: small;"><?php echo $row->address . " " . $row->postcode; ?></span></p>
-						</div>
-						<div class="activity_card_back" style="text-align: left;">
-							<div>
-								<div class="open_time">	
-									<?php 
-									if (!(strtolower(trim($row->mon))=="na")) { ?>
-										<p class="day_name">Mon</p><p class="time_detail"><?php echo $row->mon; ?></p> <?php
-									}
-									if (!(strtolower(trim($row->tue))=="na")) { ?>
-										<p class="day_name">Tue</p><p class="time_detail"><?php echo $row->tue; ?></p> <?php
-									}
-									if (!(strtolower(trim($row->wed))=="na")) { ?>
-										<p class="day_name">Wed</p><p class="time_detail"><?php echo $row->wed; ?></p> <?php
-									}
-									if (!(strtolower(trim($row->thu))=="na")) { ?>
-										<p class="day_name">Thu</p><p class="time_detail"><?php echo $row->thu; ?></p> <?php
-									}
-									if (!(strtolower(trim($row->fri))=="na")) { ?>
-										<p class="day_name">Fri</p><p class="time_detail"><?php echo $row->fri; ?></p> <?php
-									}
-									if (!(strtolower(trim($row->sat))=="na")) { ?>
-										<p class="day_name">Sat</p><p class="time_detail"><?php echo $row->sat; ?></p> <?php
-									}
-									if (!(strtolower(trim($row->sun))=="na")) { ?>
-										<p class="day_name">Sun</p><p class="time_detail"><?php echo $row->sun; ?></p> <?php
-									} ?> </div> <?php
-									if (!(strtolower(trim($row->phone))=="na")){ ?>
-										<p><i class="fa fa-phone"></i><?php echo $row->phone; ?></p> <?php
-									} 
-									if (!(strtolower(trim($row->website))=="na")) { ?>
-										<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
-										Website</i></a></p>							
-										<?php
-									}?>
-									<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location</a>
-								</div>
+		} else {
+			$activityArr=$_SESSION[$category];
+		}
+	} ?><div id="content"> <?php
+	foreach ($activityArr as $index=>$row) {	
+		if ($subcategory==false or strpos(strtolower(trim($row->subcategory)),$subcategory)!==false or (!isset($_GET['search']))){ ?>
+			<div class="activity_card">
+				<div class="activity_card_front" style="background-image: url(img/<?php echo strtolower($row->category) . '.jpg' ?>);">
+					<p><?php echo $row->name; ?><br><br>
+						<small><?php echo $row->suburb; ?></small><br>
+						<span style="font-size: small;"><?php echo $row->address . " " . $row->postcode; ?></span></p>
+					</div>
+					<div class="activity_card_back" style="text-align: left;">
+						<div>
+							<div class="open_time">	
+								<?php 
+								if (!(strtolower(trim($row->mon))=="na")) { ?>
+									<p class="day_name">Mon</p><p class="time_detail"><?php echo $row->mon; ?></p> <?php
+								}
+								if (!(strtolower(trim($row->tue))=="na")) { ?>
+									<p class="day_name">Tue</p><p class="time_detail"><?php echo $row->tue; ?></p> <?php
+								}
+								if (!(strtolower(trim($row->wed))=="na")) { ?>
+									<p class="day_name">Wed</p><p class="time_detail"><?php echo $row->wed; ?></p> <?php
+								}
+								if (!(strtolower(trim($row->thu))=="na")) { ?>
+									<p class="day_name">Thu</p><p class="time_detail"><?php echo $row->thu; ?></p> <?php
+								}
+								if (!(strtolower(trim($row->fri))=="na")) { ?>
+									<p class="day_name">Fri</p><p class="time_detail"><?php echo $row->fri; ?></p> <?php
+								}
+								if (!(strtolower(trim($row->sat))=="na")) { ?>
+									<p class="day_name">Sat</p><p class="time_detail"><?php echo $row->sat; ?></p> <?php
+								}
+								if (!(strtolower(trim($row->sun))=="na")) { ?>
+									<p class="day_name">Sun</p><p class="time_detail"><?php echo $row->sun; ?></p> <?php
+								} ?> </div> <?php
+								if (!(strtolower(trim($row->phone))=="na")){ ?>
+									<p><i class="fa fa-phone"></i><?php echo $row->phone; ?></p> <?php
+								} 
+								if (!(strtolower(trim($row->website))=="na")) { ?>
+									<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
+									Website</i></a></p>							
+									<?php
+								}?>
+								<a class="mapBtn button" id="mapBtn<?php echo $index; ?>" onclick="mapBtnFunction(this.id)" style="font-size: smaller;">Location</a>
 							</div>
 						</div>
-						<div class="modal" id="modal<?php echo $index; ?>">
-							<div class="modal-content">							
-								<iframe class="resp-mapiframe"								
-								frameborder="0" style="border:0"
-								src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>
-								&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
-							</iframe>
-						</div>
 					</div>
-					<?php
-				}
-			}?></div>
-			<?php 				
-			?>
+					<div class="modal" id="modal<?php echo $index; ?>">
+						<div class="modal-content">							
+							<iframe class="resp-mapiframe"								
+							frameborder="0" style="border:0"
+							src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>
+							&q=<?php echo str_replace(" ","+",$row->address) . "," . str_replace(" ","+",$row->state);?>" allowfullscreen>
+						</iframe>
+					</div>
+				</div>
+				<?php
+			}
+		}?></div>
+		<?php 				
+		?>
+		<a href="#" class="go-top"><span class="go-top-content">Top</span></a>
+	</div>		
+	<script type="text/javascript" src="js/go-top.js"></script>
+	<script type="text/javascript" src="js/modal.js"></script>
 
-		</div>		
-		<script type="text/javascript" src="js/modal.js"></script>
-		
-		
-		<style>
-		html,body{
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		}
-		footer{
-			height: 300px;
-			margin-top: -300px;
-		}
-		.dropbtn {
-			display: inline-block;
-			background-color: rgba(26, 24, 50, 0.72);
-			color: white;
-			font-size: 16px;
-			border: none;	
-			width: 100px;
-			height: 50px;
-		}
-		.dropbtn i{
-			color: white;
-		}
+	<style>
+	html,body{
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	footer{
+		height: 300px;
+		margin-top: -300px;
+	}
+	.dropbtn {
+		display: inline-block;
+		background-color: rgba(26, 24, 50, 0.72);
+		color: white;
+		font-size: 16px;
+		border: none;	
+		width: 100px;
+		height: 50px;
+	}
+	.dropbtn i{
+		color: white;
+	}
 
-		.dropdown {
-			position: relative;
-			display: inline-block;	
-			padding-left: 10px;
-			padding-right: 10px;
+	.dropdown {
+		position: relative;
+		display: inline-block;	
+		padding-left: 10px;
+		padding-right: 10px;
 
-		}
+	}
 
-		.dropdown-content {
-			display: none;
-			position: absolute;
-			background-color: #f1f1f1;
-			min-width: 160px;
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			z-index: 1;
-			max-height: 200px;
-			overflow: auto;
-		}
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #f1f1f1;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+		max-height: 200px;
+		overflow: auto;
+	}
 
-		.dropdown-content a {
-			color: black;
-			padding: 12px 16px;
-			text-decoration: none;
-			display: block;
-		}
+	.dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
 
-		.dropdown-content a:hover {background-color: #ddd;}
+	.dropdown-content a:hover {background-color: #ddd;}
 
-		.dropdown:hover .dropdown-content {display: block;}
+	.dropdown:hover .dropdown-content {display: block;}
 
-		.dropdown:hover .dropbtn {opacity: 0.8;}
-	</style>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("input:checkbox").change(
-				function()
-				{					
-					$("#form1").submit();					
-				});
-		});
-	</script>
-	<?php get_footer();
+	.dropdown:hover .dropbtn {opacity: 0.8;}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("input:checkbox").change(
+			function()
+			{					
+				$("#form1").submit();					
+			});
+	});
+</script>
+<?php get_footer();
