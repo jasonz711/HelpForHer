@@ -129,6 +129,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 							<div class="open_time">	
 								<?php 
 								if (!(strtolower(trim($row->mon))=="na")) { ?>
+									<p><i class="fa fa-clock-o"></i> business hour:</p>
 									<p class="day_name">Mon</p><p class="time_detail"><?php echo $row->mon; ?></p> <?php
 								}
 								if (!(strtolower(trim($row->tue))=="na")) { ?>
@@ -150,7 +151,7 @@ $key=$wpdb->get_var("select `value` from `credentials` where `id`=1");
 									<p class="day_name">Sun</p><p class="time_detail"><?php echo $row->sun; ?></p> <?php
 								} ?> </div> <?php
 								if (!(strtolower(trim($row->phone))=="na")){ ?>
-									<p><i class="fa fa-phone"></i><?php echo $row->phone; ?></p> <?php
+									<p><i class="fa fa-phone"></i> <?php echo $row->phone; ?></p> <?php
 								} 
 								if (!(strtolower(trim($row->website))=="na")) { ?>
 									<p><a href=<?php echo $row->website; ?> target="_blank" class="button" id="button" style="font-size: smaller;">
