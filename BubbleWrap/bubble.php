@@ -8,188 +8,48 @@ $wp->send_headers();
 
 get_header();
 ?>
-
-
-
-<h1>Bubble Wrap</h1>
-<p>Click to pop the bubbles</p>
-<hr>
-  
-<div class="bubble-container1">
-
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()"> 
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-  <img src="http://bit.ly/AX202_UnPop" onclick="pop()">
-
- </div>
-	
-
-<br>
-<br>
-<br>
-<br>
-
-<br>
-<br>
-<br>
-<br>
-
-<div align="center">
-
-<button class="button" onClick="window.location.href=window.location.href">Refresh</button>
+<link type="text/css" rel="stylesheet" href="css/bubble.css">
+<div style="min-height: 100%;">
+  <div style="text-align: center;padding-top: 20px;">
+    <h1 style="display: inline;">Bubble Wrap</h1><br>
+    <h4>How many bubbles would you like?</h4>
+    <form method="POST" id="bubbleform">      
+      <select name="bubble_number">
+        <option value="100" <?php if ((isset($_POST['bubble_number']) and $_POST['bubble_number']==100) or (!isset($_POST['bubble_number']))) echo "selected"; ?>>100</option>
+        <option value="300" <?php if (isset($_POST['bubble_number']) && $_POST['bubble_number']==300) echo "selected";?>>300</option>
+        <option value="500" <?php if (isset($_POST['bubble_number']) && $_POST['bubble_number']==500) echo "selected";?>>500</option>
+      </select>
+      <input type="submit" value="Start" class="start_button" style="width: 100%;">
+    </form>
+    <p>Click to pop the bubbles</p><hr>
+  </div>
+  <div id="content">   
+    <?php 
+    if (isset($_POST['bubble_number'])) {
+      $bubble_number=$_POST['bubble_number'];
+    } else {
+      $bubble_number=0;
+    }
+    for ($i=0; $i < $bubble_number; $i++) {  ?>
+      <img src="img/bubble.jpg" onclick="pop()"> <?php
+    }
+    ?>
+    
+  </div>
 </div>
-
-<style>
-
-.bubble-container1 {
-  
-}
-
-.buttons { margin-bottom: 1.0em; }
-
-button {
-  font-size: 18px;
-  font-family: sans-serif;
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #191731;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
-.button:hover {background-color: #3e8e41}
-
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-
-
-</style>
 
 <script>
 
-var popSound = document.createElement("audio");
-popSound.src="http://bit.ly/AX202_PopSound";
-function pop() {
-  event.target.src="http://bit.ly/AX202_Pop";
-  popSound.play();
-}
-
-function resetAll()
-{
-  for(var i=0; i<bubbles.length; ++i)
-  {
-    bubbles[i].src = unpoppedURL;
-  }
-}
+  var popSound = document.createElement("audio");
+  popSound.src="img/bubble.mp3";
+  function pop() {
+    event.target.src="img/bubble_broken.jpg";
+    popSound.play();
+  }  
 </script>
 
 
 <?php get_footer();  
-  
-  
+
+
 
